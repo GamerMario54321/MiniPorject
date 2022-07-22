@@ -1,0 +1,23 @@
+﻿  main_func.cpp
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(89,21): warning C4101: 'e': unreferenced local variable
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(180,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(182,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(184,59): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(186,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(188,65): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(190,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(674,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(690,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(704,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(720,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(736,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(752,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(922,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(938,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(952,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(968,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(984,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(1000,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(1151,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(1322): warning C4715: 'random': not all control paths return a value
+  MiniProject.vcxproj -> C:\Users\leonh\Desktop\C++ stuff\MiniProject\x64\Debug\MiniProject.exe
