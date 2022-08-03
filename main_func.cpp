@@ -3,12 +3,12 @@
 using namespace std;
 
 vector<student> read_studentData() {
-	student temp;																				//
-	ifstream myFile;																			//
-	vector<student> data;																		// Declaring Varribles
-	vector<string> cells;																		//
-	string linecount, cell;																		//
-	int TotalStudents = 0;																		//
+	student temp;			
+	ifstream myFile;		
+	vector<student> data;	
+	vector<string> cells;	
+	string linecount, cell;	
+	int TotalStudents = 0;	
 
 	myFile.open("student.csv");
 
@@ -17,30 +17,30 @@ vector<student> read_studentData() {
 		system("pause");
 		abort();
 	}
-																								//
-	while (getline(myFile, linecount)) 															// Line counter
-		TotalStudents++;																		//
-																								//
-	myFile.close();																				//
+									
+	while (getline(myFile, linecount)) 
+		TotalStudents++;			
+									
+	myFile.close();					
 
 	myFile.open("student.csv");
 
 	while (TotalStudents != 0) {
-		string line;																			//
-		getline(myFile, line);																	//
-		//cout << line << endl;																	//
-																								//
-		for (int i = 0; i < line.size(); i++) {													//
-			if (line.at(i) != ',') {															//
-				cell += line.at(i);																// Putting each cell from one row into a string varaible
-			}																					//
-			else {																				//
-				cells.push_back(cell);															//
-				cell.clear();																	//
-			}																					//
-		}																						//
-		cells.push_back(cell);																	//
-		cell.clear();																			//
+		string line;																				
+		getline(myFile, line);				
+		//cout << line << endl;				
+											
+		for (int i = 0; i < line.size(); i++) {
+			if (line.at(i) != ',') {		
+				cell += line.at(i);			
+			}								
+			else {							
+				cells.push_back(cell);		
+				cell.clear();				
+			}								
+		}									
+		cells.push_back(cell);				
+		cell.clear();																			
 
 		//for (int i = 0; i < cells.size(); i++) {
 		//	cout << cells.at(i) << "|";
@@ -93,21 +93,68 @@ vector<student> read_studentData() {
 			abort();											
 		}														
 
-		temp.setStudentName(cells.at(0));														//
-		temp.setStudnetSsport(stoi(cells.at(4)), stoi(cells.at(5)), stoi(cells.at(6)));			// seting the temp student class from the varaibles from the cell										
-		temp.setStudentChoice(cells.at(1).at(0), cells.at(2).at(0), cells.at(3).at(0));			// then clearing the cells for the next row
-		cells.clear();																			// 
+		temp.setStudentName(cells.at(0));												
+		temp.setStudnetSsport(stoi(cells.at(4)), stoi(cells.at(5)), stoi(cells.at(6)));	
+		temp.setStudentChoice(cells.at(1).at(0), cells.at(2).at(0), cells.at(3).at(0));	
+		cells.clear();																	
 
-		data.push_back(temp);																	// pushing the temp student class into the vector student class
+		data.push_back(temp);															
 
-		TotalStudents--;																		// for line count purposes
+		TotalStudents--;																
 	}
-	myFile.close();																				// closing the file
-	return data;																				// returning the data
+	myFile.close();																		
+	return data;																		
 }
 
 
 
+
+
+void write_studentData(vector<vector<student>> list) {
+	vector<student> chess, dancing, gaming, running, swimming, tenis, empty;
+	vector<student>::iterator it;
+	pushVector(list, chess, dancing, gaming, running, swimming, tenis, empty);
+
+	cout << "writing csv files" << endl;
+
+	writeto(chess, "Chess");
+	writeto(dancing, "Dancing");
+	writeto(gaming, "Gaming");
+	writeto(running, "Running");
+	writeto(swimming, "Swimming");
+	writeto(tenis, "Tennis");
+
+	cout << "Writing complete";
+	clrscr();
+}
+
+
+
+void writeto(vector<student> list, string name) {
+	vector<student>::iterator it;
+	ofstream fout;
+	fout.open(name + ".csv");
+
+	fout << "Name, Choice, GPA\n";
+
+	for (it = list.begin(); it != list.end(); it++) {
+		fout << it->getStudentName() << ",";
+		if (it->stolen == "random")
+			fout << " Random,";
+		else if (it->getStudentChoice().at(0) == name.at(0))
+			fout << " Choice 1,";
+		else if (it->stole == 1)
+			fout << " Stolen from " << it->stolen << ",";
+		else if (it->getStudentChoice().at(1) == name.at(0))
+			fout << " Choice 2,";
+		else if (it->getStudentChoice().at(2) == name.at(0))
+			fout << " Choice 3,";
+
+		fout << it->getStudentGPA() << "\n";
+	}
+
+	fout.close();
+}
 
 
 
@@ -154,14 +201,14 @@ vector<student> sortVector(vector<student> list, int num) {
 		return list;
 
 	vector<student>::iterator it;
-	for (it = list.begin(); it != list.end(); it++)												// combining the history of won competition and gpa into a double by:
-		it->combined = it->getStudnetSsport().at(num) + (it->getStudentGPA() / 10);				// won.gpa
+	for (it = list.begin(); it != list.end(); it++)									
+		it->combined = it->getStudnetSsport().at(num) + (it->getStudentGPA() / 10);	
 
-	for (int i = 0; i < list.size() - 1; i++) {													//
-		for (int o = 0; o < list.size() - i - 1; o++) {											// bubble sort
-			if (list.at(o).combined < list.at(o + 1).combined)									//
-				swap(list.at(o), list.at(o + 1));												//
-		}																						//
+	for (int i = 0; i < list.size() - 1; i++) {										
+		for (int o = 0; o < list.size() - i - 1; o++) {								
+			if (list.at(o).combined < list.at(o + 1).combined)						
+				swap(list.at(o), list.at(o + 1));									
+		}																			
 	}
 
 	return list;
@@ -172,51 +219,51 @@ vector<student> sortVector(vector<student> list, int num) {
 
 
 vector<vector<student>> round1(vector<student> data) {
-	vector<student> chess, dancing, gaming, running, swimming, tenis, kicked;					// vector declaration
+	vector<student> chess, dancing, gaming, running, swimming, tenis, kicked;		
 	sports spdata;
-	vector<student>::iterator it;																// vector iterator
+	vector<student>::iterator it;													
 	vector<vector<student>> final;
 
-	for (it = data.begin(); it != data.end(); it++) {											//
-		switch (it->getStudentChoice().at(0)) {													//
-		case 'C':																				//
-			chess.push_back(*it);																//
-			break;																				//
-																								//
-		case 'D':																				//
-			dancing.push_back(*it);																//
-			break;																				//
-																								//
-		case 'G':																				//
-			gaming.push_back(*it);																// Pushing back the list of the student first choice into the
-			break;																				// other vector classes
-																								//
-		case 'R':																				//
-			running.push_back(*it);																//
-			break;																				//
-																								//
-		case 'S':																				//
-			swimming.push_back(*it);															//
-			break;																				//
-																								//
-		case 'T':																				//
-			tenis.push_back(*it);																//
-			break;																				//
-		}																						//
-	}																							//
+	for (it = data.begin(); it != data.end(); it++) {								
+		switch (it->getStudentChoice().at(0)) {										
+		case 'C':																	
+			chess.push_back(*it);													
+			break;																	
+																					
+		case 'D':																	
+			dancing.push_back(*it);													
+			break;																	
+																					
+		case 'G':																	
+			gaming.push_back(*it);													
+			break;																	
+																					
+		case 'R':																	
+			running.push_back(*it);													
+			break;																	
+																					
+		case 'S':																	
+			swimming.push_back(*it);												
+			break;																	
+																					
+		case 'T':																	
+			tenis.push_back(*it);													
+			break;																	
+		}																			
+	}																				
 
-	if (chess.size() > spdata.chess)															//
-		round1kick(chess, chess.size() - spdata.chess, kicked);									//
-	if (dancing.size() > spdata.dancing)														//
-		round1kick(dancing, dancing.size() - spdata.dancing, kicked);							//
-	if (gaming.size() > spdata.gaming)															//
-		round1kick(gaming, gaming.size() - spdata.gaming, kicked);								// Checking if the the amount of student in their first choice
-	if (running.size() > spdata.running)														// exceeds the amount of vacancies in the sport
-		round1kick(running, running.size() - spdata.running, kicked);							//
-	if (swimming.size() > spdata.swimming)														//
-		round1kick(swimming, swimming.size() - spdata.swimming, kicked);						//
-	if (tenis.size() > spdata.tenis)															//
-		round1kick(tenis, tenis.size() - spdata.tenis, kicked);									//
+	if (chess.size() > spdata.chess)												
+		round1kick(chess, chess.size() - spdata.chess, kicked);						
+	if (dancing.size() > spdata.dancing)											
+		round1kick(dancing, dancing.size() - spdata.dancing, kicked);				
+	if (gaming.size() > spdata.gaming)												
+		round1kick(gaming, gaming.size() - spdata.gaming, kicked);					
+	if (running.size() > spdata.running)											
+		round1kick(running, running.size() - spdata.running, kicked);				
+	if (swimming.size() > spdata.swimming)											
+		round1kick(swimming, swimming.size() - spdata.swimming, kicked);			
+	if (tenis.size() > spdata.tenis)												
+		round1kick(tenis, tenis.size() - spdata.tenis, kicked);						
 
 	roundprint(chess, "Chess", -1);
 	roundprint(dancing, "Dancing", -1);
@@ -240,14 +287,14 @@ vector<vector<student>> round1(vector<student> data) {
 void round1kick(vector<student>& list, int kick, vector<student>& kicked) {
 	list = sortVector(list, 0);
 
-	//for (int i = 0; i < list.size(); i++) {													  //
-	//	cout << list.at(i).getStudentName() << "(" << list.at(i).combined << ")";				  // print out sorted list for checking purposes
-	//}																							  // remove "//" if needed
+	//for (int i = 0; i < list.size(); i++) {							
+	//	cout << list.at(i).getStudentName() << "(" << list.at(i).combined < "); 
+	//}																	
 
-	for (kick; kick != 0; kick--) {																//
-		kicked.push_back(list.back());															// kicking by adding the kick people to the kicked vector
-		list.pop_back();																		// and pop_back the back of the original list
-	}																							//
+	for (kick; kick != 0; kick--) {	
+		kicked.push_back(list.back());
+		list.pop_back();			
+	}								
 }
 
 
@@ -540,9 +587,9 @@ vector<vector<student>> round5(vector<vector<student>> data) {
 	sports spdata;
 	pushVector(data, chess, dancing, gaming, running, swimming, tenis, kicked);
 
-	bool b = 1;
 	srand(time(0));
 	for (it = kicked.begin(); it != kicked.end(); it++) {
+	bool b = 1;
 		it->stolen = "random";
 		do {
 			int thing = random();

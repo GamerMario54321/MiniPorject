@@ -7,12 +7,13 @@
 using namespace std;
 
 vector<student> read_studentData();
+void write_studentData(vector<vector<student>> list);
+void writeto(vector<student> list, string sport);
 
 void clrscr();
 
 vector<student> sortVector(vector<student> data, int num);
-
-void pushVector(vector<student> &s1, vector <student> &s2, vector <student> &s3, vector <student> &s4, vector <student> &s5, vector <student> &s6, vector <student> &s7);
+void pushVector(vector<vector<student>> data, vector<student> &s1, vector <student> &s2, vector <student> &s3, vector <student> &s4, vector <student> &s5, vector <student> &s6, vector <student> &s7);
 
 vector<vector<student>> round1(vector<student> data);
 void round1kick(vector<student>& thing, int kick, vector<student>& kicked);
