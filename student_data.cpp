@@ -39,3 +39,83 @@ vector<bool> student::getStudnetSsport() {
 double student::getStudentGPA() {
 	return GPA;
 }
+
+void sports::init() {
+	ifstream myFile;
+	vector<string> cells;
+	string cell, line;
+
+	myFile.open("sports.csv");
+
+	if (myFile.good() != 1) {
+		cout << "Fatal error: Could not find sports.csv\n";
+		system("pause");
+		abort();
+	}
+
+	getline(myFile, line);
+	//cout << line << endl;				
+
+	for (int i = 0; i < line.size(); i++) {
+		if (line.at(i) != ',') {
+			cell += line.at(i);
+		}
+		else {
+			cells.push_back(cell);
+			cell.clear();
+		}
+	}
+	cells.push_back(cell);
+	cell.clear();
+
+
+	if (cells.at(0).find_first_of("0123456789") == std::string::npos) {
+		cout << "Fatal error: sports.csv format not correct!\n";
+		system("pause");
+		abort();
+	}
+
+	if (cells.at(1).find_first_of("0123456789") == std::string::npos) {
+		cout << "Fatal error: sports.csv format not correct!\n";
+		system("pause");
+		abort();
+	}
+
+	if (cells.at(2).find_first_of("0123456789") == std::string::npos) {
+		cout << "Fatal error: sports.csv format not correct!\n";
+		system("pause");
+		abort();
+	}
+
+	if (cells.at(3).find_first_of("0123456789") == std::string::npos) {
+		cout << "Fatal error: sports.csv format not correct!\n";
+		system("pause");
+		abort();
+	}
+
+	if (cells.at(4).find_first_of("0123456789") == std::string::npos) {
+		cout << "Fatal error: sports.csv format not correct!\n";
+		system("pause");
+		abort();
+	}
+
+	if (cells.at(5).find_first_of("0123456789") == std::string::npos) {
+		cout << "Fatal error: sports.csv format not correct!\n";
+		system("pause");
+		abort();
+	}
+
+	if (cells.at(6).find_first_of("CDGRST") == std::string::npos) {
+		cout << "Fatal error: sports.csv format not correct!\n";
+		system("pause");
+		abort();
+	}
+
+	chess = stoi(cells.at(0));
+	dancing = stoi(cells.at(1));
+	gaming = stoi(cells.at(2));
+	running = stoi(cells.at(3));
+	swimming = stoi(cells.at(4));
+	tenis = stoi(cells.at(5));
+	special = cells.at(6).at(0);
+}

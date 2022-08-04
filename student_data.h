@@ -1,6 +1,8 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 class student {
@@ -26,11 +28,8 @@ private:
 };
 
 struct sports{
-	int chess = 4;
-	int dancing = 4;
-	int gaming = 4;
-	int running = 8;
-	int swimming = 4;
-	int tenis = 4;
+	int chess = 4, dancing = 4, gaming = 4, running = 8, swimming = 4, tenis = 4;
 	char special = 'G';
+
+	void init();
 };	

@@ -2,6 +2,7 @@
 #include "student_data.h"
 using namespace std;
 
+
 vector<student> read_studentData() {
 	student temp;			
 	ifstream myFile;		
@@ -13,7 +14,7 @@ vector<student> read_studentData() {
 	myFile.open("student.csv");
 
 	if (myFile.good() != 1) {
-		cout << "Fatal error: Could not find student.csv";
+		cout << "Fatal error: Could not find student.csv\n";
 		system("pause");
 		abort();
 	}
@@ -48,37 +49,37 @@ vector<student> read_studentData() {
 		//cout << endl;
 
 		if (cells.size() != 8) {								
-			cout << "Fatal error: student.csv format not correct!";
+			cout << "Fatal error: student.csv format not correct!\n";
 			system("pause");
 			abort();											
 		}														
 		if (cells.at(1).find_first_of("CDGRST") == string::npos) {
-			cout << "Fatal error: choices option not valid";
+			cout << "Fatal error: choices option not valid\n";
 			system("pause");
 			abort();											
 		}														
 		if (cells.at(2).find_first_of("CDGRST") == string::npos) {
-			cout << "Fatal error: choices option not valid";
+			cout << "Fatal error: choices option not valid\n";
 			system("pause");
 			abort();											
 		}														
 		if (cells.at(3).find_first_of("CDGRST") == string::npos) {
-			cout << "Fatal error: choices option not valid";
+			cout << "Fatal error: choices option not valid\n";
 			system("pause");
 			abort();											
 		}														
 		if (cells.at(4).find_first_of("10") == string::npos) {	
-			cout << "Fatal error: won compition history not set to 1 or 0";
+			cout << "Fatal error: won compition history not set to 1 or 0\n";
 			system("pause");
 			abort();											
 		}														
 		if (cells.at(5).find_first_of("10") == string::npos) {	
-			cout << "Fatal error: won compition history not set to 1 or 0";
+			cout << "Fatal error: won compition history not set to 1 or 0\n";
 			system("pause");
 			abort();											
 		}														
 		if (cells.at(6).find_first_of("10") == string::npos) {	
-			cout << "Fatal error: won compition history not set to 1 or 0";
+			cout << "Fatal error: won compition history not set to 1 or 0\n";
 			system("pause");
 			abort();											
 		}														
@@ -89,7 +90,7 @@ vector<student> read_studentData() {
 		catch (exception& e)									
 		{					
 			system("pause");
-			cout << "Fatal error: GPA value not vaild";								
+			cout << "Fatal error: GPA value not vaild\n";								
 			abort();											
 		}														
 
@@ -115,7 +116,7 @@ void write_studentData(vector<vector<student>> list) {
 	vector<student>::iterator it;
 	pushVector(list, chess, dancing, gaming, running, swimming, tenis, empty);
 
-	cout << "writing csv files" << endl;
+	cout << "writing csv files\n";
 
 	writeto(chess, "Chess");
 	writeto(dancing, "Dancing");
@@ -124,7 +125,7 @@ void write_studentData(vector<vector<student>> list) {
 	writeto(swimming, "Swimming");
 	writeto(tenis, "Tennis");
 
-	cout << "Writing complete";
+	cout << "Writing complete\n";
 	clrscr();
 }
 
@@ -221,6 +222,7 @@ vector<student> sortVector(vector<student> list, int num) {
 vector<vector<student>> round1(vector<student> data) {
 	vector<student> chess, dancing, gaming, running, swimming, tenis, kicked;		
 	sports spdata;
+	spdata.init();
 	vector<student>::iterator it;													
 	vector<vector<student>> final;
 
@@ -306,6 +308,7 @@ vector<vector<student>> round2(vector<vector<student>> data) {
 	vector<vector<student>> final;
 	vector<student>::iterator it;
 	sports spdata;
+	spdata.init();
 	int win = 0, kick, free;
 	pushVector(data, chess, dancing, gaming, running, swimming, tenis, kicked);
 	cout << "round 2\n============================\n";
@@ -469,6 +472,7 @@ int round2kick(vector<student> &list, vector<student> &kicked, int size, string 
 void round2steal(vector<student> &list, vector<student> &steal, string name) {
 	vector<student>::iterator it;
 	sports spdata;
+	spdata.init();
 	for (it = list.begin(); it != list.end(); it++) {
 		if (it->getStudentChoice().at(1) == spdata.special && it->getStudnetSsport().at(1) > 0) {
 			it->stolen = name;
@@ -501,6 +505,7 @@ vector<vector<student>> round3or4(vector<vector<student>> data, int round) {
 	vector<student>::iterator it;
 	vector<vector<student>> final;
 	sports spdata;
+	spdata.init();
 	pushVector(data, chess, dancing, gaming, running, swimming, tenis, kicked);
 
 	for (it = kicked.begin(); it != kicked.end(); it++) {
@@ -585,6 +590,7 @@ vector<vector<student>> round5(vector<vector<student>> data) {
 	vector<student>::iterator it;
 	vector<vector<student>> final;
 	sports spdata;
+	spdata.init();
 	pushVector(data, chess, dancing, gaming, running, swimming, tenis, kicked);
 
 	srand(time(0));
