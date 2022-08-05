@@ -1,2 +1,14 @@
-﻿  student_data.cpp
+﻿  main_func.cpp
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(90,21): warning C4101: 'e': unreferenced local variable
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(210,34): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(277,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(279,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(281,59): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(283,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(285,65): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(287,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(331,21): warning C4101: 'free': unreferenced local variable
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(587,3): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(611,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\leonh\Desktop\C++ stuff\MiniProject\main_func.cpp(708): warning C4715: 'random': not all control paths return a value
   MiniProject.vcxproj -> C:\Users\leonh\Desktop\C++ stuff\MiniProject\x64\Debug\MiniProject.exe

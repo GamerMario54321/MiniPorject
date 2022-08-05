@@ -28,8 +28,8 @@ private:
 };
 
 struct sports{
-	int chess = 4, dancing = 4, gaming = 4, running = 8, swimming = 4, tenis = 4;
-	char special = 'G';
+	int chess = 0, dancing = 0, gaming = 0, running = 0, swimming = 0, tenis = 0;
+	char special = 'n';
 
 	void init();
 };	

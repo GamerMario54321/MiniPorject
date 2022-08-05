@@ -197,26 +197,45 @@ void pushVector(vector<vector<student>> data, vector<student>& s1, vector <stude
 
 
 
-vector<student> sortVector(vector<student> list, int num) {
+vector<student> sortVector(vector<student> list, int num, int combine) {
 	if (list.size() <= 1)
 		return list;
 
 	vector<student>::iterator it;
-	for (it = list.begin(); it != list.end(); it++)									
-		it->combined = it->getStudnetSsport().at(num) + (it->getStudentGPA() / 10);	
-
-	for (int i = 0; i < list.size() - 1; i++) {										
-		for (int o = 0; o < list.size() - i - 1; o++) {								
-			if (list.at(o).combined < list.at(o + 1).combined)						
-				swap(list.at(o), list.at(o + 1));									
-		}																			
+	if (combine == 1) {
+		for (it = list.begin(); it != list.end(); it++)
+			it->combined = it->getStudnetSsport().at(num) + (it->getStudentGPA() / 10);
 	}
+
+	Quicksort(list, 0, list.size()-1);
 
 	return list;
 }
 
+int Partition(vector<student>& v, int start, int end) {
 
+	int pivot = end;
+	int j = start;
+	for (int i = start; i < end; ++i) {
+		if (v.at(i).combined > v.at(pivot).combined) {
+			swap(v[i], v[j]);
+			++j;
+		}
+	}
+	swap(v[j], v[pivot]);
+	return j;
 
+}
+
+void Quicksort(vector<student>& v, int start, int end) {
+
+	if (start < end) {
+		int p = Partition(v, start, end);
+		Quicksort(v, start, p - 1);
+		Quicksort(v, p + 1, end);
+	}
+
+}
 
 
 vector<vector<student>> round1(vector<student> data) {
@@ -287,7 +306,7 @@ vector<vector<student>> round1(vector<student> data) {
 }
 
 void round1kick(vector<student>& list, int kick, vector<student>& kicked) {
-	list = sortVector(list, 0);
+	list = sortVector(list, 0, 1);
 
 	//for (int i = 0; i < list.size(); i++) {							
 	//	cout << list.at(i).getStudentName() << "(" << list.at(i).combined < "); 
@@ -360,12 +379,7 @@ vector<vector<student>> round2(vector<vector<student>> data) {
 
 		round2steal(kicked, steal, "nothing");
 
-		for (int i = 0; i < steal.size() - 1; i++) {
-			for (int o = 0; o < steal.size() - i - 1; o++) {
-				if (steal.at(o).combined > steal.at(o + 1).combined)
-					swap(steal.at(o), steal.at(o + 1));
-			}
-		}
+		sortVector(steal, 0, 0);
 
 		for (kick = 3 - win; kick != 0; kick--) {
 			switch (spdata.special) {
@@ -461,6 +475,7 @@ int round2kick(vector<student> &list, vector<student> &kicked, int size, string 
 	for (kick = 3 - win; kick != 0; kick--) {
 		if (size - list.size() >= free)
 			break;
+
 		kicked.push_back(list.back());
 		cout << list.back().getStudentName() << " kicked from " << name << endl;
 		list.pop_back();
@@ -568,7 +583,7 @@ vector<vector<student>> round3or4(vector<vector<student>> data, int round) {
 void round3or4insert(vector<student> &list, vector<student> &list2, vector<student> &kicked, int round, int size) {
 	vector<student>::iterator it;
 	if (size - list.size() > 0) {
-		sortVector(list2, round);
+		sortVector(list2, round, 0);
 		for (int i = size - list.size(); i != 0; i--) {
 			if (list2.size() != 0) {
 				list.push_back(list2.back());

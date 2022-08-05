@@ -12,7 +12,11 @@ void writeto(vector<student> list, string sport);
 
 void clrscr();
 
-vector<student> sortVector(vector<student> data, int num);
+vector<student> sortVector(vector<student> data, int num, int combined);
+int Partition(vector<student>& v, int start, int end);
+void Quicksort(vector<student>& v, int start, int end);
+
+
 void pushVector(vector<vector<student>> data, vector<student> &s1, vector <student> &s2, vector <student> &s3, vector <student> &s4, vector <student> &s5, vector <student> &s6, vector <student> &s7);
 
 vector<vector<student>> round1(vector<student> data);
